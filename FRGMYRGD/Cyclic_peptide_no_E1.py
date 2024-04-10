@@ -61,7 +61,7 @@ def load_initial_conditions(df, k0):
     initial_conditions = [F, 0 ,  Ac, 0, 0, E2, E3, 0]  # Add extra zeros to match the unpacking in kinetic_plotting
 
     k0 = k0  # To be changed depending on pH
-    k1 = 0.036
+    k1 = 1
     k2 = 1
     k3 = 1
     k4 = 1
@@ -71,10 +71,10 @@ def load_initial_conditions(df, k0):
     k9 = 1
     k10 = 1
     k12 = 1
-    k13 = .1
+    k13 = 1
 
 
-    minimo3 = 1e-6
+    minimo3 = 1e-4
 
 
     params = Parameters()
@@ -197,8 +197,7 @@ def kinetic_plotting(z, t, params):
     k0, k1, k2, k3, k4, k6, k7, k8, k9, k10, k12, k13 = params
     F, W, Ac, An, E1, E2, E3, An2 = z
     
-    O = (k1*Ac*F) / (k2+k3)
-    O2 = (k7*E2*F) / (k8+k9)
+
 
 
 
@@ -287,11 +286,11 @@ def plot_fitted(df, y):
     sns.lineplot(data = y, x = 'min', y = 'E3', ax = ax5, alpha = 0.5, color = sns.color_palette(palette)[4])
 
 
-    ax1.set(xlabel = 'Time [min]', ylabel = 'EDC [mM]', xticks = (0, 150, 300),xlim = (-20, 320))
-    ax2.set(xlabel = 'Time [min]', ylabel = 'Acid [mM]', xticks = (0, 150, 300),xlim = (-20, 320))
-    ax3.set(xlabel = 'Time [min]', ylabel = 'E1 [mM]', xticks = (0, 150, 300),xlim = (-20, 320))
-    ax4.set(xlabel = 'Time [min]', ylabel = 'E2 [mM]', xticks = (0, 150, 300),xlim = (-20, 320))
-    ax5.set(xlabel = 'Time [min]', ylabel = 'E3 [mM]', xticks = (0, 150, 300),xlim = (-20, 320))
+    ax1.set(xlabel = 'Time [min]', ylabel = 'EDC [mM]', )
+    ax2.set(xlabel = 'Time [min]', ylabel = 'Acid [mM]')
+    ax3.set(xlabel = 'Time [min]', ylabel = 'E1 [mM]')
+    ax4.set(xlabel = 'Time [min]', ylabel = 'E2 [mM]')
+    ax5.set(xlabel = 'Time [min]', ylabel = 'E3 [mM]')
 
     plt.tight_layout()
     
